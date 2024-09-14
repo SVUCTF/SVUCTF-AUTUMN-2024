@@ -32,8 +32,7 @@ var Button = function Button(_ref2) {
   var baseClasses = "w-full py-2 px-4 rounded-md font-medium text-white transition duration-150 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2";
   var colorClasses = {
     indigo: "bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500",
-    teal: "bg-teal-600 hover:bg-teal-700 focus:ring-teal-500",
-    purple: "bg-purple-600 hover:bg-purple-700 focus:ring-purple-500"
+    teal: "bg-teal-600 hover:bg-teal-700 focus:ring-teal-500"
   };
   return /*#__PURE__*/React.createElement("button", {
     onClick: onClick,
@@ -288,7 +287,7 @@ var CTFChallenge = function CTFChallenge() {
     color: "teal"
   }, "Update User Info")), /*#__PURE__*/React.createElement(Button, {
     onClick: getFlag,
-    color: "purple"
+    color: "teal"
   }, "Get Flag")));
 };
 ReactDOM.render(/*#__PURE__*/React.createElement(CTFChallenge, null), document.getElementById('root'));
