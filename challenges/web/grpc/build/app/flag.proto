@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package flagservice;
+
+service FlagService {
+  rpc GetFlag (FlagRequest) returns (FlagResponse) {}
+}
+
+message FlagRequest {
+  string token = 1;
+}
+
+message FlagResponse {
+  string flag = 1;
+}
+
