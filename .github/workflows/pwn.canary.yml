@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - "main"
-      - "${{ env.BRANCH }}"
+      - "pwn/canary"
     paths:
       - "!**/README.md"
-      - "challenges/${{ env.TYPE }}/${{ env.NAME }}/build/**"
+      - "challenges/pwn/canary/build/**"
   workflow_dispatch:
 
 env:
