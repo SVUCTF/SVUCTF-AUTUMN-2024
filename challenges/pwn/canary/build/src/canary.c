@@ -9,6 +9,16 @@ void init() {
     setvbuf(stderr, NULL, _IONBF, 0);
 }
 
+void banner() {
+    printf(" ___  _  _  __  __  ___  ____  ____ \n");
+    printf("/ __)( \\/ )(  )(  )/ __)(_  _)( ___)\n");
+    printf("\\__ \\ \\  /  )(__)(( (__   )(   )__) \n");
+    printf("(___/  \\/  (______)\\___) (__) (__) \n");
+    printf("\n");
+    printf("Welcome to the SVUCTF AUTUMN 2024!\n");
+    printf("\n");
+}
+
 void vuln() {
     char message[64];
     while (1) {
@@ -24,6 +34,7 @@ void vuln() {
 
 int main() {
     init();
+    banner();
     vuln();
     return EXIT_SUCCESS;
 }
