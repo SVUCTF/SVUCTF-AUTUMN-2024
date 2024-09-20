@@ -15,8 +15,8 @@ env:
   NAME: note
   BRANCH: pwn/note
   EXECUTABLE: /home/ctf/note
-  LIBC: /lib/x86_64-linux-gnu/libc.so.6
-  LD: /lib64/ld-linux-x86-64.so.2
+  LIBC: /home/ctf/lib/x86_64-linux-gnu/libc.so.6
+  LD: //home/ctf/lib64/ld-linux-x86-64.so.2
   REGISTRY: ghcr.io
 
 jobs:
