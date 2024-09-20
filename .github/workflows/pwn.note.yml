@@ -16,7 +16,7 @@ env:
   BRANCH: pwn/note
   EXECUTABLE: /home/ctf/note
   LIBC: /home/ctf/lib/x86_64-linux-gnu/libc.so.6
-  LD: //home/ctf/lib64/ld-linux-x86-64.so.2
+  LD: /home/ctf/lib64/ld-linux-x86-64.so.2
   REGISTRY: ghcr.io
 
 jobs:
@@ -69,8 +69,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/${{ env.EXECUTABLE }}
+          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.EXECUTABLE }})
           git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
           git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
-          git commit -m "chore(${{ env.BRANCH }}): update ${{ env.EXECUTABLE }}, libc, and ld files [skip ci]" || echo "No changes to commit"
+          git commit -m "chore(${{ env.BRANCH }}): update $(basename ${{ env.EXECUTABLE }}), libc, and ld files [skip ci]" || echo "No changes to commit"
           git push
