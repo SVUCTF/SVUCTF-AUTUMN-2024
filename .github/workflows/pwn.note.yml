@@ -72,5 +72,5 @@ jobs:
           git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.EXECUTABLE }})
           git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
           git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
-          git commit -m "chore(${{ env.BRANCH }}): update ${{ env.EXECUTABLE }}, libc, and ld files [skip ci]" || echo "No changes to commit"
+          git commit -m "chore(${{ env.BRANCH }}): update $(basename ${{ env.EXECUTABLE }}), libc, and ld files [skip ci]" || echo "No changes to commit"
           git push
