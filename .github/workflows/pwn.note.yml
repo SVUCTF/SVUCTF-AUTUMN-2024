@@ -1,0 +1,76 @@
+name: Challenge Note
+
+on:
+  push:
+    branches:
+      - "main"
+      - "pwn/note"
+    paths:
+      - "!**/README.md"
+      - "challenges/pwn/note/build/**"
+  workflow_dispatch:
+
+env:
+  TYPE: pwn
+  NAME: note
+  BRANCH: pwn/note
+  EXECUTABLE: /home/ctf/note
+  LIBC: /home/ctf/lib/x86_64-linux-gnu/libc.so.6
+  LD: //home/ctf/lib64/ld-linux-x86-64.so.2
+  REGISTRY: ghcr.io
+
+jobs:
+  challenge-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+
+      - name: Extract executable from Docker image
+        run: |
+          docker create --name temp ${{ steps.meta.outputs.tags }}
+          mkdir -p ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
+          docker cp temp:${{ env.EXECUTABLE }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.EXECUTABLE }})
+          docker cp temp:${{ env.LIBC }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
+          docker cp temp:${{ env.LD }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
+          docker rm temp
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/${{ env.EXECUTABLE }}
+          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
+          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
+          git commit -m "chore(${{ env.BRANCH }}): update ${{ env.EXECUTABLE }}, libc, and ld files [skip ci]" || echo "No changes to commit"
+          git push
