@@ -1,11 +1,18 @@
-# 写给猫娘的一封情书
+---
+title: 写给猫娘的一封情书
+author: ksks
+difficulty: Medium
+category: Misc
+image:
+port:
+writeup_author:
+tags:
+  - Russian Encode
+  - USB HID Packet
+reference:
+---
 
-- 作者：ksks
-- 参考：-
-- 难度：-
-- 分类：Misc
-- 镜像：-
-- 端口：-
+# 写给猫娘的一封情书
 
 ## 题目描述
 

@@ -1,11 +1,17 @@
-# 简单混个淆
+---
+title: 简单混个淆
+author: 13m0n4de
+difficulty: Easy
+category: Reverse
+image:
+port:
+writeup_author:
+tags:
+  - SMC
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Reverse
-- 镜像：-
-- 端口：-
+# 简单混个淆
 
 ## 题目描述
 

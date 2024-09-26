@@ -1,11 +1,19 @@
-# gRPC
+---
+title: gRPC
+author: 13m0n4de
+difficulty: Normal
+category: Web
+image: ghcr.io/svuctf/svuctf-autumn-2024/grpc:latest
+port: 50051
+writeup_author:
+tags:
+  - gRPC
+  - Service Discovery
+  - API Version Downgrade
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Web
-- 镜像：-
-- 端口：-
+# gRPC
 
 ## 题目描述
 

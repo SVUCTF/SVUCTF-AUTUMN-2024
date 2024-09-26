@@ -1,15 +1,24 @@
-# 又是文件上传
+---
+title: 又是文件上传
+author: Only
+difficulty: Easy
+category: Web
+image: ghcr.io/svuctf/svuctf-autumn-2024/imagecreatefrom:latest
+port: 80
+writeup_author:
+tags:
+  - PHP
+  - File Upload
+  - Image Rerendering
+  - GD Library
+reference:
+---
 
-- 作者：Only
-- 参考：-
-- 难度：-
-- 分类：Web
-- 镜像：-
-- 端口：-
+# 又是文件上传
 
 ## 题目描述
 
-<description>
+文件上传怎么你了໒( = ᴥ =)ʋ
 
 ## 题目解析
 
