@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:16.04 AS builder
 
 RUN apt-get update && apt-get install -y gcc make
 
@@ -27,7 +27,7 @@ COPY --from=builder /lib/x86_64-linux-gnu/libc.so.6 /home/ctf/lib/x86_64-linux-g
 COPY --from=builder /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /home/ctf/lib64/
 
 # Copy the challenge binary
-COPY --from=builder --chmod=500 /build/canary /home/ctf/canary
+COPY --from=builder --chmod=500 /build/note /home/ctf/note
 
 # Set up device nodes
 RUN mknod /home/ctf/dev/null c 1 3 && \
