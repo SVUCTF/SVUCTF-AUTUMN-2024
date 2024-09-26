@@ -45,7 +45,7 @@ _start:
     pop eax
     dec ebx         ; stdin (0)
     mov ecx, esp
-    push 64
+    push 32
     pop edx
     int 0x80
 
