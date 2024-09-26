@@ -2,9 +2,7 @@ name: Challenge Note
 
 on:
   push:
-    branches:
-      - "main"
-      - "pwn/note"
+    branches: ["main", "pwn/note"]
     paths:
       - "!**/README.md"
       - "challenges/pwn/note/build/**"
@@ -46,7 +44,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
           tags: |
-            latest
+            type=raw,value=latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -60,17 +58,21 @@ jobs:
         run: |
           docker create --name temp ${{ steps.meta.outputs.tags }}
           mkdir -p ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
-          docker cp temp:${{ env.EXECUTABLE }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.EXECUTABLE }})
-          docker cp temp:${{ env.LIBC }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
-          docker cp temp:${{ env.LD }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
+          if [ ! -z "${{ env.EXECUTABLE }}" ]; then
+            docker cp temp:${{ env.EXECUTABLE }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          fi
+          if [ ! -z "${{ env.LIBC }}" ]; then
+            docker cp temp:${{ env.LIBC }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          fi
+          if [ ! -z "${{ env.LD }}" ]; then
+            docker cp temp:${{ env.LD }} ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          fi
           docker rm temp
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.EXECUTABLE }})
-          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LIBC }})
-          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/$(basename ${{ env.LD }})
-          git commit -m "chore(${{ env.BRANCH }}): update $(basename ${{ env.EXECUTABLE }}), libc, and ld files [skip ci]" || echo "No changes to commit"
+          git add ./challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          git diff --staged --quiet || git commit -m "chore(${{ env.BRANCH }}): update attachments [skip ci]"
           git push
