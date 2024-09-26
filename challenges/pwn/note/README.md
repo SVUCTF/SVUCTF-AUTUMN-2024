@@ -1,11 +1,19 @@
-# Note
+---
+title: Note
+author: 13m0n4de
+difficulty: Medium
+category: Pwn
+image: ghcr.io/svuctf/svuctf-autumn-2024/note:latest
+port: 70
+writeup_author:
+tags:
+  - UAF
+  - Double Free
+  - Fastbin
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Pwn
-- 镜像：-
-- 端口：-
+# Note
 
 ## 题目描述
 

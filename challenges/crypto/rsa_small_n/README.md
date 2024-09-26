@@ -1,11 +1,20 @@
-# LAST-RSA
+---
+title: LAST-RSA
+author: Only
+difficulty: Medium
+category: Crypto
+image:
+port:
+writeup_author:
+tags:
+  - RSA
+  - Brute Force
+reference:
+  name: BCACTF-4.0 / RSA is broken
+  url: https://github.com/BCACTF/bcactf-4.0/tree/main/rsa-is-broken
+---
 
-- 作者：Only
-- 参考：[BCACTF-4.0 / RSA is broken](https://github.com/BCACTF/bcactf-4.0/tree/main/rsa-is-broken)
-- 难度：-
-- 分类：Crypto
-- 镜像：-
-- 端口：-
+# LAST-RSA
 
 ## 题目描述
 

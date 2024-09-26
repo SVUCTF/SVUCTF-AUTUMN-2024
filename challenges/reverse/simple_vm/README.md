@@ -1,11 +1,18 @@
-# SimpleVM
+---
+title: SimpleVM
+author: 13m0n4de
+difficulty: Medium
+category: Reverse
+image:
+port:
+writeup_author:
+tags:
+  - VM
+  - OpCode
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Reverse
-- 镜像：-
-- 端口：-
+# SimpleVM
 
 ## 题目描述
 

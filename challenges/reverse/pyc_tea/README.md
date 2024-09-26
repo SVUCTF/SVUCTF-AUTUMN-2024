@@ -1,11 +1,18 @@
-# 奇怪的电路
+---
+title: 奇怪的电路
+author: 13m0n4de
+difficulty: Normal
+category: Reverse
+image:
+port:
+writeup_author:
+tags:
+  - PYC
+  - TEA
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Reverse
-- 镜像：-
-- 端口：-
+# 奇怪的电路
 
 ## 题目描述
 

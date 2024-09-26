@@ -1,11 +1,18 @@
-# Canary
+---
+title: Canary
+author: 13m0n4de
+difficulty: Normal
+category: Pwn
+image: ghcr.io/svuctf/svuctf-autumn-2024/canary:latest
+port: 70
+writeup_author:
+tags:
+  - Leak Canary
+  - ROP
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Pwn
-- 镜像：-
-- 端口：-
+# Canary
 
 ## 题目描述
 

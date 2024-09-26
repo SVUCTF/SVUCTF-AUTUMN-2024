@@ -1,11 +1,18 @@
-# 我再也不要出有附件的题目了
+---
+title: 我再也不要出有附件的题目了
+author: 13m0n4de
+difficulty: Easy
+category: Pwn
+image: ghcr.io/svuctf/svuctf-autumn-2024/tinyelf:latest
+port: 70
+writeup_author:
+tags:
+  - Ret2Shellcode
+  - TinyELF
+reference:
+---
 
-- 作者：13m0n4de
-- 参考：-
-- 难度：-
-- 分类：Pwn
-- 镜像：-
-- 端口：-
+# 我再也不要出有附件的题目了
 
 ## 题目描述
 
